@@ -1,0 +1,63 @@
+Important Link:
+---------------
+https://docs.oracle.com/en/database/oracle/oracle-database/12.2/adjsn/generation.html#GUID-C0F8F837-EE36-4EDD-9261-6E8A9245906C
+https://asktom.oracle.com/pls/apex/f?p=100:11:::::P11_QUESTION_ID:9531729900346071626
+
+Create Json:
+------------
+BEGIN
+                SELECT JSON_OBJECT('nomineeName' VALUE vNomineeName,
+                                   'occupation'  VALUE vOccupation,
+                                   'add1'        VALUE vAdd1,
+                                   'add2'        VALUE vAdd1,
+                                   'add3'        VALUE vAdd3,
+                                   'city'        VALUE vCity,
+                                   'country'     VALUE vCountry,
+                                   'postalCode'  VALUE vPostalCode,
+                                   'nomineeName' VALUE vNomineeName,
+                                   'nomineePercentage' VALUE vNomPercentage,
+                                   'gurAdd1'     VALUE vGurAdd1,
+                                   'gurAdd2'     VALUE vGurAdd2,
+                                   'gurCity'     VALUE vGurCity,
+                                   'gurName'     VALUE vGurName,
+                                   'gurPostalCode' VALUE vGurPostalCode,
+                                   'sectorCode'  VALUE vSectorCode,
+                                   'subSecCode'  VALUE vSubSecCode
+                ) 
+                INTO pJsonOutput
+                FROM DUAL;
+            END;
+
+Json Parse:
+-------------
+SELECT json_value (vGetsavingsJson, '$.nomineeNam'),
+                       json_value (vGetsavingsJson, '$.occupation'),
+                       json_value (vGetsavingsJson, '$.add1'),
+                       json_value (vGetsavingsJson, '$.add2'),
+                       json_value (vGetsavingsJson, '$.city'),
+                       json_value (vGetsavingsJson, '$.country'),
+                       json_value (vGetsavingsJson, '$.postalCode'),
+                       json_value (vGetsavingsJson, '$.nomineePercentage'),
+                       json_value (vGetsavingsJson, '$.gurAdd1'),
+                       json_value (vGetsavingsJson, '$.gurAdd2'),
+                       json_value (vGetsavingsJson, '$.gurCity'),
+                       json_value (vGetsavingsJson, '$.gurName'),
+                       json_value (vGetsavingsJson, '$.gurPostalCode'),
+                       json_value (vGetsavingsJson, '$.sectorCode'),
+                       json_value (vGetsavingsJson, '$.subSecCode')
+                  INTO vNomineeName,
+                       vOccupation,
+                       vAdd1,
+                       vAdd2,
+                       vCity,
+                       vCountry,
+                       vPostalCode,
+                       vNomineePer,
+                       vGurAdd1,
+                       vGurAdd2,
+                       vGurCity,
+                       vGurName,
+                       vGurPostalCode,
+                       vSectorCode,
+                       vSubSecCode
+                  FROM DUAL;
